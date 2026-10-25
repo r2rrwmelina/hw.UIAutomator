@@ -24,7 +24,7 @@ class ChangeTextTest {
 
     private lateinit var device: UiDevice
     private val textToSet = "Netology"
-    private val emptyText = ""
+    private val emptyText = "  "
     private val defaultText = "Привет, UiAutomator!"
 
     private fun waitForPackage(packageName: String) {
@@ -44,7 +44,7 @@ class ChangeTextTest {
         val launcherPackage = device.launcherPackageName
         device.wait(Until.hasObject(By.pkg(launcherPackage)), TIMEOUT)
     }
-//
+
     @Test
     fun testInternetSettings() {
         waitForPackage(SETTINGS_PACKAGE)
@@ -89,7 +89,6 @@ class ChangeTextTest {
         val result = device.wait(Until.findObject(By.res(packageName, "text")), TIMEOUT).text
         assertEquals(result, textToSet)
     }
-
 }
 
 
